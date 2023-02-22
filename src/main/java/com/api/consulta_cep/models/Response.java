@@ -1,6 +1,5 @@
 package com.api.consulta_cep.models;
-
-import java.util.ArrayList;
+import com.api.consulta_cep.models.Estados;
 
 public class Response {
     private String cep;
@@ -10,48 +9,8 @@ public class Response {
 	private String cidade;
 	private String estado;
 	private Float frete;
-
-
-	ArrayList<String> regNorte = new ArrayList<String>(){
-        {
-         add("AM");
-         add("RR");
-         add("AP");
-         add("PA");
-         add("TO");
-         add("RO");
-        }
-
-    };
-    ArrayList<String> regCentOeste = new ArrayList<String>(){
-        {
-         add("MT");
-         add("MS");
-         add("GO");
-         add("DF");
-        }
-
-    };
-    ArrayList<String> regSudeste = new ArrayList<String>(){
-        {
-         add("SP");
-         add("RJ");
-         add("ES");
-         add("MG");
-        }
-
-    };
-    ArrayList<String> regSul = new ArrayList<String>(){
-        {
-         add("AM");
-         add("RR");
-         add("AP");
-         add("PA");
-         add("TO");
-         add("RO");
-        }
-
-    };
+	private Estados est = new Estados();
+	
 	public Response(String cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
 		this.setCep(cep);
 		this.setRua(logradouro);
@@ -101,7 +60,20 @@ public class Response {
 		return frete;
 	}
 	public void setFrete() {
-		this.frete = 2f;
-	}
-	
+		if (est.getRegiaoSul().contains(this.estado)) {
+			this.frete = 17.30f;
+		}
+		if (est.getRegiaoNordeste().contains(this.estado)) {
+			this.frete = 15.98f;
+		}
+		if (est.getRegiaoCentroOeste().contains(this.estado)) {
+			this.frete = 12.50f;
+		}
+		if (est.getRegiaoSudeste().contains(this.estado)) {
+			this.frete = 7.85f;
+		}
+		if (est.getRegiaoNorte().contains(this.estado)) {
+			this.frete = 20.83f;
+		}
+	}	
 }
