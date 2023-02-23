@@ -1,5 +1,4 @@
 package com.api.consulta_cep.models;
-import com.api.consulta_cep.models.Estados;
 
 public class Response {
     private String cep;
