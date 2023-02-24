@@ -1,5 +1,4 @@
 package com.api.consulta_cep.models;
-
 public class Response {
     private String cep;
 	private String rua;
