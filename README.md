@@ -297,7 +297,7 @@ mvn clean test
 - [Cucumber](https://cucumber.io/) - BDD
 - [Swagger](https://swagger.io/) - Docs
 - [Spring_Boot](https://spring.io/) - Server Framework
-= [Java](https://www.java.com/pt-BR/) - Main language
+- [Java](https://www.java.com/pt-BR/) - Main language
 
 ## ✍️ Authors <a name = "authors"></a>
 
