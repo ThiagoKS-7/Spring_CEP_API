@@ -1,56 +1,42 @@
 package com.api.consulta_cep;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import com.api.consulta_cep.models.Consulta;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import org.aspectj.lang.annotation.Before;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.springframework.http.HttpStatus;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest(classes = {ServletWebServerFactoryAutoConfiguration.class},
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
         properties = {"spring.cloud.config.enabled=false"})
 @ExtendWith(MockitoExtension.class)
-class ConsultaCepApplicationTests {
+public class ConsultaCepApplicationTests  extends SpringIntegrationTest {
+    @Autowired
+    protected TestRestTemplate testRestTemplate;
 
-	@Autowired
-    private MockMvc mockMvc;
-	private WebApplicationContext webApplicationContext;
-    private ObjectMapper objectMapper;
+    @When("^the client calls /v1/consulta-endereco$")
+    @Test
+    public void executeCepConsultation() throws Throwable {
+        executePost();
+    }
 
-	@Test
-	void contextLoads()  {
+    @Then("^assert that the client receives status code of 200$")
+    @Test
+    public void checkEndpointHealth() throws Throwable {
+        final HttpStatus currentStatusCode = latestResponse.getTheResponse().getStatusCode();
+        assertTrue(currentStatusCode == HttpStatus.OK);
+    }
 
-	}
-	@Before(value = "")
-	public void setUp() {
-	  mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-	}
-
-
-	@Test
-	@DisplayName("Testando response da consulta de CEP")
-	@AutoConfigureMockMvc
-	void getCepInfo() throws Exception {
-
-		Consulta consulta = new Consulta("01001000");
-
-		mockMvc.perform(post("/v1/consulta-endereco")
-        .contentType("application/json")
-        .content(objectMapper.writeValueAsString(consulta)))
-        .andExpect(status().isOk());
-	}
-
+    @And("^assert the client receives a server response for CEP {word}$")
+    @Test
+    public void checkResponseBody(String response) throws Throwable {
+        assertTrue(latestResponse.getBody() == response);
+    }
 }
