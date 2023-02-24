@@ -32,6 +32,9 @@ API de consultas de CEP com Spring Boot,Swagger, JUnit5 e Cucumber
 
 Seu desafio é construir uma API REST de consulta de endereço e cálculo de frete para
 um determinado CEP. O contrato da API deve ser conforme especificado abaixo:
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/83460816/221191223-0bde7716-ea61-491f-873c-38f925f70ea8.png)
 
 
 Para a busca do endereço do CEP, você deve consultar a API VIA CEP, conforme a
