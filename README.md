@@ -14,6 +14,11 @@
 [![License](https://img.shields.io/badge/license-GNUv3-blue.svg)](/LICENSE)
 
 </div>
+
+<p align="center">
+  API de consultas de CEP com Spring Boot,Swagger, JUnit5 e Cucumber
+</p>
+
 <details>
  <summary style="font-size:30px; font-weight:bold"><img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="50"> <h3>Frete das Regiões:</h3></summary>
 <br/>
@@ -231,13 +236,6 @@ curl --location --request POST 'localhost:8080/v1/consulta-endereco' \
   
  ```
 </details>
-ROTAS:
-
-
-
-<p align="center">
-API de consultas de CEP com Spring Boot,Swagger, JUnit5 e Cucumber
-</p>
 
 ## 📝 Table of Contents
 
