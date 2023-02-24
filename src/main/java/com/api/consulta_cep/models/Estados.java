@@ -49,12 +49,9 @@ public class Estados {
     };
     ArrayList<String> regiaoSul = new ArrayList<String>(){
         {
-         add("AM");
-         add("RR");
-         add("AP");
-         add("PA");
-         add("TO");
-         add("RO");
+         add("RS");
+         add("SC");
+         add("PR");
         }
 
     };
