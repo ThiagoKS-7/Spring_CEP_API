@@ -1,9 +1,10 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://user-images.githubusercontent.com/83460816/221190949-881b5ec6-86fb-4b24-befd-e906226c76ea.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
+
+<h3 align="center">Spring Boot CEP REST API</h3>
 
 <div align="center">
 
